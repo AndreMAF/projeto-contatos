@@ -1,2 +1,5 @@
 # projeto-contatos
-formadora 4
+
+Objetivo do app: Trabalho Formadora 4
+
+Tecnologias utilizadas: Ionic Angular
