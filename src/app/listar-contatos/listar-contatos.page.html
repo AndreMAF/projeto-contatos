@@ -1,13 +1,18 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>listar-contatos</ion-title>
+    <ion-title>Lista de Contatos</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">listar-contatos</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+
+  <app-contato-item 
+    *ngFor="let user of usuariosApi"
+    [user]="user">
+  </app-contato-item>
+  <app-contato-item 
+    *ngFor="let user of usuariosFirebase"
+    [user]="user">
+  </app-contato-item>
+
 </ion-content>

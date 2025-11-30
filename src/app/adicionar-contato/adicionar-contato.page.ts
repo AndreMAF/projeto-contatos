@@ -1,20 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { FirebaseService } from '../services/firebase';
 
 @Component({
   selector: 'app-adicionar-contato',
+  standalone: true,
+  imports: [IonicModule, CommonModule, FormsModule],
   templateUrl: './adicionar-contato.page.html',
   styleUrls: ['./adicionar-contato.page.scss'],
-  standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
-export class AdicionarContatoPage implements OnInit {
+export class AdicionarContatoPage {
 
-  constructor() { }
+  contato = {
+    name: '',
+    email: ''
+  };
 
-  ngOnInit() {
+  constructor(private firebaseService: FirebaseService) {}
+
+  adicionarContato() {
+    this.firebaseService.addContato(this.contato)
+      .then(() => {
+        alert('Contato adicionado com sucesso!');
+        this.contato = { name: '', email: '' };
+      })
+      .catch(err => {
+        console.error(err);
+        alert('Erro ao adicionar contato.');
+      });
   }
-
 }
