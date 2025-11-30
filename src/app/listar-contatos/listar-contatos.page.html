@@ -6,13 +6,28 @@
 
 <ion-content>
 
-  <app-contato-item 
-    *ngFor="let user of usuariosApi"
-    [user]="user">
-  </app-contato-item>
-  <app-contato-item 
-    *ngFor="let user of usuariosFirebase"
-    [user]="user">
+  <app-contato-item *ngFor="let user of usuariosApi" [user]="user">
   </app-contato-item>
 
+  <app-contato-item *ngFor="let user of usuariosFirebase" [user]="user">
+  </app-contato-item>
+
+
+
+
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons class="ion-justify-content-center">
+      <ion-button routerLink="/listar-contatos">
+        <ion-icon name="list-outline" slot="start"></ion-icon>
+        Listar
+      </ion-button>
+      <ion-button routerLink="/adicionar-contato">
+        <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+        Adicionar
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

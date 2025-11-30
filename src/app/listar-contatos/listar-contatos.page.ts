@@ -4,11 +4,14 @@ import { CommonModule } from '@angular/common';
 import { ContatosService } from '../services/contatos';
 import { FirebaseService } from '../services/firebase';
 import { ContatoItemComponent } from '../contato-item/contato-item.component';
+import { RouterModule } from '@angular/router';
+import { addIcons } from 'ionicons';
+import { listOutline, addCircleOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-listar-contatos',
   standalone: true,
-  imports: [IonicModule, CommonModule, ContatoItemComponent],
+  imports: [IonicModule, CommonModule, ContatoItemComponent, RouterModule],
   templateUrl: './listar-contatos.page.html',
   styleUrls: ['./listar-contatos.page.scss'],
 })
@@ -20,8 +23,10 @@ export class ListarContatosPage implements OnInit {
 
   constructor(
     private contatosService: ContatosService,
-    private firebaseService: FirebaseService
-  ) { }
+    private firebaseService: FirebaseService,
+  ) { 
+    addIcons({ listOutline, addCircleOutline }); 
+  }
 
  ngOnInit() {
   this.listarUsuariosApi();
